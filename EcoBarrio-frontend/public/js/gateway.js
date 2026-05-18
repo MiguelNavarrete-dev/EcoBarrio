@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("¡Logueado con éxito!", user.uid);
                 
                 // Si todo sale bien, lo mandas a tu panel de administración
-                window.location.href = "admin/index.html";
+                window.location.href = "admin/admin.html";
 
                 formulario.reset(); // Opcional: Limpia el formulario después de un login exitoso
                 
