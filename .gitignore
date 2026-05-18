@@ -1,0 +1,9 @@
+# Ignorar entorno virtual del backend
+EcoBarrio-backend/venv/
+EcoBarrio-backend/.venv/
+EcoBarrio-backend/env/
+__pycache__/
+*.pyc
+
+# Ignorar configuraciones locales de VS Code
+.vscode/

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Principal</title>
+    <!--bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="public/css/index.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">EcoBarrio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5500/EcoBarrio-frontend/admin/index.html">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Bienvenida a EcoBarrio -->
+            <section>
+                <div class="container text-center" id="bienvenida">
+                    <h1 id="titleEcoBArrio">Bienvenido a EcoBarrio</h1>
+                    <p id="subtitle">Explora las plantas de tu barrio y contribuye a su cuidado.</p>
+                    <img src="" alt="Logo de EcoBarrio" id="logo" class="img-fluid">
+                </div>
+    
+            </section>
+
+            <!-- de que trata EcoBarrio -->
+            <section>
+                <div class="container text-center" id="queEs">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-11 col-sm-8 col-md-4 d-flex justify-content-center">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/EcoBarrio-frontend/img/WelcomeEco.webp" class="card-img-top" alt="EcoBarrio img">
+                                <div class="card-body">
+                                    <h5 class="card-title">¿Qué es EcoBarrio?</h5>
+                                    <p class="card-text">EcoBarrio es una red de puntos verdes inteligentes que conecta a los vecinos con la naturaleza de su comuna. Usamos tecnología para que el cuidado de las plazas sea una tarea colaborativa y en tiempo real.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-11 col-sm-8 col-md-4 d-flex justify-content-center">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/EcoBarrio-frontend/img/queHace.webp" class="card-img-top" alt="imagen de corte">
+                                <div class="card-body">
+                                    <h5 class="card-title">¿Que hace?</h5>
+                                    <p class="card-text">Monitorea en tiempo real la salud y los niveles de agua de la vegetación urbana. A través de códigos QR, entrega datos dinámicos a la comunidad para coordinar el riego y la mantención de cada punto verde.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-11 col-sm-8 col-md-4 d-flex justify-content-center">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/EcoBarrio-frontend/img/comoAyudar.webp" class="card-img-top" alt="imagen de spa">
+                                <div class="card-body">
+                                    <h5 class="card-title">¿Cómo participo?</h5>
+                                    <p class="card-text">Busca el código QR en las plazas de tu barrio, escanéalo con tu celular y colabora. Podrás ver si la planta necesita agua, reportar incidencias y participar activamente en el cuidado de tu entorno.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"> 
+            <p class="col-md-4 mb-0 text-body-secondary">© <span id="Anio"></span> EcoBarrio, Inc</p> 
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap"> 
+                <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+                    <use xlink:href="#bootstrap"></use>
+                </svg> 
+            </a> 
+            <ul class="nav col-md-4 justify-content-end"> 
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-2 text-body-secondary linkF">Home</a>
+                </li> 
+                <li class="nav-item linkF">
+                    <a href="#" class="nav-link px-2 text-body-secondary">Features</a>
+                </li> 
+                <li class="nav-item linkF">
+                    <a href="#" class="nav-link px-2 text-body-secondary">Pricing</a>
+                </li> 
+                <li class="nav-item linkF">
+                    <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
+                </li> 
+                <li class="nav-item linkF">
+                    <a href="/EcoBarrio-frontend/gateway.html" class="nav-link px-2 text-body-secondary">Admin</a>
+                </li> 
+            </ul> 
+        </footer> 
+
+    </div>
+
+
+
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!--JS-->
+    <script src="public/js/general.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.281), rgba(7, 6, 6, 0.158)), url('/EcoBarrio-frontend/img/Fondo.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para la bienvenida */
+#bienvenida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+    font-family: cursive;
+    color: springgreen;
+}
+#titleEcoBArrio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 200px;
+}
+
+#subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 2.1rem;
+    color: #ddc7c7e8;
+}
+
+#queEs {
+    margin-top: 50px;
+}
+
+/* Estilos para las cards */
+.card{
+    text-align: center;
+    margin-top: 16px;
+    border-radius: 25px;
+    background-color: burlywood !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hace que el movimiento sea suave */
+    border: none; /* Opcional: quita el borde para que se vea más moderna */
+}
+
+.card:hover {
+    transform: translateY(-15px); /* La mueve 15 pixeles hacia arriba */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important; /* Añade una sombra más profunda */
+}
+
+.card img {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+/* Footer */
+footer {
+    background-color: aqua;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.linkF{
+    color: darkblue !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #2ecc71 !important; /* Cambia a un verde ecológico al pasar el mouse */
+    /* O si prefieres mantenerlo negro pero que se subraye: text-decoration: underline; */
+}

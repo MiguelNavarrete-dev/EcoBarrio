@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBarrio Admin</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons (Siguen siendo útiles) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-[#f0f4f3] text-[#1b4332]">
+
+    <div class="md:hidden flex items-center justify-between bg-white p-4 shadow-sm">
+        <h1 class="text-xl font-bold text-[var(--primary-green)]">EcoBarrio</h1>
+        <button onclick="toggleSidebar()" class="text-2xl">
+            <i class="bi bi-list"></i> <!-- Icono de menú -->
+        </button>
+    </div>  
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar (Columna Izquierda) -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-0 h-screen flex flex-col border-r border-white/20">
+            <div class="p-6 text-center">
+                <!-- Tu logo guardado -->
+                <img src="tu-logo-generado.png" alt="EcoBarrio" class="w-12 mx-auto mb-2"> 
+                <h5 class="text-[var(--primary-green)] font-bold text-xl">EcoBarrio</h5>
+            </div>
+
+            <nav class="flex-1 px-4 space-y-2">
+                <a href="#" class="flex items-center p-3 bg-[#f0f7f4] text-[var(--primary-green)] rounded-xl font-semibold transition-all">
+                    <i class="bi bi-tree-fill mr-3"></i> Puntos Verdes
+                </a>
+                <a href="#" class="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-xl transition-all">
+                    <i class="bi bi-activity mr-3"></i> Interacciones
+                </a>
+                
+                <div class="pt-4 pb-2 px-3">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Sistema</span>
+                </div>
+                
+                <a href="/EcoBarrio-frontend/usuario.html" class="flex items-center p-3 text-red-500 hover:bg-red-50 rounded-xl transition-all">
+                    <i class="bi bi-box-arrow-right mr-3"></i> Salir
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenido Principal (Columna Derecha) -->
+        <main class="flex-1 p-8">
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold text-[var(--primary-green)]">Panel de Administración</h1>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm font-medium bg-white px-3 py-1 rounded-full shadow-sm" id="display-name"></span>
+                </div>
+            </header>
+
+            <button class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors" onclick="document.getElementById('agregarDato').classList.remove('hidden')">
+                        <i class="bi bi-plus-lg mr-2"></i> Agregar Punto Verde
+            </button>
+
+            <section class="bg-white/70 backdrop-blur-md border border-white/40 rounded-3xl p-6 shadow-sm">
+                <table class="table-auto" style="width: 100%; border-collapse: collapse;">
+                    <thead class="bg-[#e0f2f1]">
+                        <tr px-4 py-2>
+                            <th px-4 py-2>ID</th>
+                            <th px-4 py-2>IMAGEN</th>
+                            <th px-4 py-2>NOMBRE</th>
+                            <th px-4 py-2>SLUG</th>
+                            <th px-4 py-2>RESISTENCIA</th>
+                            <th px-4 py-2>ACCIONES</th>
+                        </tr>
+                    </thead>
+
+                    <div class="overflow-x-auto bg-white rounded-3xl shadow-sm border border-gray-100">
+                        <table class="min-w-full">
+                            <thead>
+                                </thead>
+                            <tbody id="tablaPuntos">
+                                </tbody>
+                        </table>
+                    </div>
+
+                    <p class="mt-4 text-xs text-gray-400 italic px-4">
+                        * La resistencia se mide en una escala de 1 a 3, donde 1 es la más baja y 3 es la más alta.
+                    </p>
+
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para agregar dato -->
+    <div id="agregarDato" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h3 class="text-lg font-bold">¡Agregar Punto Verde!</h3>
+            <form id="formAgregar" class="mt-4 space-y-4">
+                <input type="text" id="nombre" placeholder="Nombre" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" id="slug" placeholder="Slug" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" id="latitud" placeholder="Latitud" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" id="longitud" placeholder="Longitud" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" id="comuna" placeholder="Comuna" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="number" id="nivel_resistencia" placeholder="Resistencia" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" id="foto_referencia" oninput="actualizarPreview('foto_referencia', 'preview-agregar')" placeholder="Foto de Referencia" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <div class="space-y-1">    
+                    <div class="mt-4 flex justify-center">
+                        <img id="preview-agregar" src="" alt="Preview" 
+                            class="hidden max-h-40 rounded-2xl shadow-lg border-4 border-white object-cover transition-all duration-300">
+                    </div>
+                </div>
+                <button type="button" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors" onclick="agregarPuntoVerde()">
+                    Agregar
+                </button>
+            </form>
+            
+            <button id="cerrar-btn" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" >
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <!--Editar dato -->
+    <div id="editModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/30 backdrop-blur-md transition-opacity duration-300">
+        <div class="w-full max-w-md mx-4 rounded-[2rem] border border-white/40 bg-white/70 p-8 shadow-2xl backdrop-blur-2xl transform transition-all">
+            
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 tracking-tight">Editar Punto Verde</h2>
+                <button onclick="cerrarModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <form id="editForm" class="space-y-5">
+                <input type="hidden" id="edit-slug-hidden">
+                
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Nombre del Punto</label>
+                    <input type="text" id="edit-nombre" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none transition-all" placeholder="Ej: Plaza las Lilas">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Slug</label>
+                    <input type="text" id="edit-slug" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none transition-all" placeholder="Ej: plaza-las-lilas">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Latitud</label>
+                        <input type="number" step="any" id="edit-latitud" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Longitud</label>
+                        <input type="number" step="any" id="edit-longitud" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Comuna</label>
+                        <input type="text" id="edit-comuna" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none">
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Nivel de Resistencia</label>
+                        <input type="number" step="any" id="edit-resistencia" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none">
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-gray-400 uppercase ml-2">Foto de Referencia</label>
+                        <input type="text" id="edit-foto" class="w-full rounded-2xl border-none bg-white/60 p-4 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] focus:ring-2 focus:ring-blue-400 outline-none">
+                    </div>
+                </div>
+                <div class="flex space-x-3 pt-4">
+                    <button type="button" onclick="cerrarModal()" class="flex-1 py-4 rounded-2xl font-bold text-gray-500 bg-gray-100 hover:bg-gray-200 transition-all">
+                        Cancelar
+                    </button>
+                    <button type="button" class="flex-1 py-4 rounded-2xl font-bold text-white bg-blue-500 shadow-lg shadow-blue-200 hover:bg-blue-600 hover:-translate-y-1 transition-all" onclick="guardarCambios()">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../public/js/index.js"></script>
+</body>
+</html>
