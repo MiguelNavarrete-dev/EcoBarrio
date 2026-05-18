@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "public": false,
+  "rewrites": [
+    { "source": "/", "destination": "/EcoBarrio-frontend/index.html" },
+    { "source": "/index.html", "destination": "/EcoBarrio-frontend/index.html" },
+    { "source": "/(.*)", "destination": "/EcoBarrio-frontend/$1" }
+  ]
+}
